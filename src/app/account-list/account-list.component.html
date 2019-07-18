@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <h2 class="account-list">Account List</h2>
+    <hr>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Account Number</th>
+          <th>Account Type</th>
+          <th>Balance</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let account of accountList">
+          <td>{{ account.account_number }}</td>
+          <td>{{ account.account_type }}</td>
+          <td>ZAR {{ account.balance }}</td>
+          <td>
+            <button
+            [ngClass]="account.canWithdraw ? 'btn btn-success': 'btn'"
+            type="button"
+            class="pull-right some-padding"
+            [disabled]="!account.canWithdraw"
+            (click)="onWithdraw()">Withdraw</button>
+          </td>
+        </tr>
+        <tr>
+          <td><h3>Balance</h3></td>
+          <td></td>
+          <td><h3>ZAR {{ total }}</h3></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
